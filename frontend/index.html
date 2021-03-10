@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" type = "text/css" href = "styles.css">
+</head>
+<body>
+    <div>
+        <h1 id="header">Welcome to Travel-Journal </h1>
+    </div>
+    <div class="entry-form">
+        <h2>Create an entry here</h2>
+         <form id="blogform">
+             <label> Title </label>
+             <input type="text" name="title" id="entry-title">
+             <label> Content </label>
+             <textarea cols="25" name="mytextbox" rows="8" id="entry-content"></textarea>
+             <label> Favorite </label>
+             <input type="text" name="favorite" id="entry-favorite">
+             <label> Start Date </label>
+             <input type="text" name="start-date" id="entry-start-date">
+             <label> End Date </label>
+             <input type="text" name="end-date" id="entry-end-date">
+             <label> Country </label>
+             <input type="text" name="name" id="country-name">
+             <label> Area </label>
+             <input type="text" name="are" id="country-area">
+             <input type="submit" value="New Entry" id="entry-submit">
+         </form>
+    </div>
+
+    <div id="container">
+        <h1>
+            Below is a List of all your posts 
+        </h1>
+        <ul id="post-area"> </ul>
+    </div>
+    
+</body>
+    <script src="./index.js"> </script>
+</html>
