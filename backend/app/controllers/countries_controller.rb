@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-    
+    before_action :set_country, except: [:index]
     
     def index
         countries = Country.all
@@ -28,10 +28,10 @@ class CountriesController < ApplicationController
     end
 
     def set_country
-        country = Country.find_or_create_by(id: params[:country_id])
+        country = Country.find_by(id: params[:id])
     end
 
     def countries_params
-        params.require(:country).permit(:name, :area, :activity)
+        params.require(:country).permit(:name, :area)
     end
 end

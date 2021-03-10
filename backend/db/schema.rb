@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_173556) do
   create_table "countries", force: :cascade do |t|
     t.string "name"
     t.string "area"
-    t.string "activity"
   end
 
   create_table "entries", force: :cascade do |t|
