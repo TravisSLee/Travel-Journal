@@ -11,7 +11,11 @@ class EntriesController < ApplicationController
     end
 
     def  show
-
+        if @entry.nil?
+            render json: {message: "You have no entries, please write one down."}
+        else
+            render json: @entry.entry_to_json
+        end
     end
 
     def create
@@ -24,8 +28,8 @@ class EntriesController < ApplicationController
 
     private
 
-    def  set_entry
-        entry = Entry.find_by(id: params[:id])
+    def set_entry
+        @entry = Entry.find_by(id: params[:id])
     end
 
     def set_country
