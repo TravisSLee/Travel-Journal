@@ -55,10 +55,9 @@ class EntriesController < ApplicationController
     end
 
     def entries_params
-        params.require(:entry).permit( :country_id, :title, :content, :favorite, :start_date, :end_date, country_attributes: [
+        params.require(:entry).permit( :title, :content, :favorite, :start_date, :end_date, :country_id,  country_attributes: [
           :name,
-          :area,
-          :activity
+          :area
        ])
     end
 end
