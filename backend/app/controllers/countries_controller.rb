@@ -3,6 +3,11 @@ class CountriesController < ApplicationController
     
     def index
         countries = Country.all
+        if countries.empty?
+            render json: {message: "You have no countries, please write an entry down."}
+        else
+            render json: Country.arr_to_json
+        end
     end
 
     def  show

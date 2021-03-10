@@ -1,8 +1,13 @@
 class EntriesController < ApplicationController
-    before_action :set_entry
+    before_action :set_entry, except: [:index]
     
     def index
         entries = Entry.all
+        if entries.empty?
+            render json: {message: "You have no entries, please write one down."}
+        else
+            render json: Entry.arr_to_json
+        end
     end
 
     def  show
