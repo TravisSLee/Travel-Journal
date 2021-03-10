@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-    before_action :set_entry, except: [:index]
+    before_action :set_entry, except: [:index, :create]
     
     def index
         entries = Entry.all
@@ -19,11 +19,29 @@ class EntriesController < ApplicationController
     end
 
     def create
-
+        @entry = Entry.create(country_params)
+        if @entry.save
+            render json: @entry.country_to_json
+        else
+            render json: @entry.errors, status: :unprocessable_entity
+        end
     end
 
     def update
+        @entry = Entry.update(country_params)
+        if @entry.save
+            render json: @entry.country_to_json
+        else
+            render json: @entry.errors, status: :unprocessable_entity
+        end
+    end
 
+    def destroy
+        if @entry.nil?
+            render json: {message: "You have no entries, please write one down."}
+        else
+            @entry.delete
+        end
     end
 
     private
