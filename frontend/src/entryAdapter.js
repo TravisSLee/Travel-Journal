@@ -10,11 +10,9 @@ class EntryAdapter {
         const entryInfo = {
             title: e.target[0].value,
             content: e.target[1].value,
-            start_date: e.target[2].value,
-            end_date: e.target[3].value,
-            countryName: e.target[4].value,
-            countryArea: e.target[5].value,
-            favorite: e.target[6].value
+            countryName: e.target[2].value,
+            countryArea: e.target[3].value,
+            favorite: e.target[4].value
         }
 
      
@@ -27,7 +25,7 @@ class EntryAdapter {
         })
             .then(r => r.json())
             .then(data => {
-                let entry = new Entry(e.id, e.title, e.content, e.favorite, e.start_date, e.end_date, e.country.name, e.country.area);
+                let entry = new Entry(e.id, e.title, e.content, e.favorite, e.country.name, e.country.area, e.created_at);
                 entry.putEntryOnDom();
             })
         }
@@ -38,7 +36,7 @@ class EntryAdapter {
                 .then(r => r.json())
                 .then(data => {
                     data.forEach(e => {
-                        let entry = new Entry(e.title, e.content, e.favorite, e.start_date, e.end_date, e.country.name, e.country.area);
+                        let entry = new Entry(e.title, e.content, e.favorite, e.country.name, e.country.area, e.created_at);
                         entry.putEntryOnDom();
                     })
                 })
