@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_173556) do
     t.string "content"
     t.integer "country_id"
     t.boolean "favorite"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "created_at"
   end
 
 end

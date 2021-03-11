@@ -19,20 +19,20 @@ class EntriesController < ApplicationController
     end
 
     def create
-        @entry = Entry.create(country_params)
+        @entry = Entry.create(entry_params)
         if @entry.save
-            render json: @entry.country_to_json
+            render json: @entry.entry_to_json
         else
             render json: @entry.errors, status: :unprocessable_entity
         end
     end
 
     def update
-        @entry = Entry.update(country_params)
+        @entry = Entry.update(entry_params)
         if @entry.save
-            render json: @entry.country_to_json
+            render json: @entry.entry_to_json
         else
-            render json: @entry.errors, status: :unprocessable_entity
+            render json: @entry.errors, status: :unprocessable_entity;
         end
     end
 
@@ -47,15 +47,15 @@ class EntriesController < ApplicationController
     private
 
     def set_entry
-        @entry = Entry.find_by(id: params[:id])
+        @entry = Entry.find_by(id: params[:id]);
     end
 
     def set_country
-        country = Country.find_or_create_by(id: params[:country_id])
+        country = Country.find_or_create_by(id: params[:country_id]);
     end
 
-    def entries_params
-        params.require(:entry).permit( :title, :content, :favorite, :start_date, :end_date, :country_id,  country_attributes: [
+    def entry_params
+        params.require(:entry).permit(:title, :content, :favorite, :country_id, country_attributes: [
           :name,
           :area
        ])

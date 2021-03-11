@@ -14,7 +14,9 @@ class Entry < ApplicationRecord
             title: self.title,
             content: self.content,
             favorite: self.favorite,
+            created_at: self.created_at.strftime("%Y/%m/%d"),
             country: self.country
+            
         }
     end
 end

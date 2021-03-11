@@ -29,8 +29,8 @@ class Entry {
         p2.innerText = this.content
         p3.innerText = this.countryName
         p4.innerHTML = this.countryArea
-        p5.innerHTML = this.start_date.toString();
-        p6.innerHTML = this.end_date.toString();
+        p5.innerHTML = this.start_date
+        p6.innerHTML = this.end_date
         button.innerText = "Favorite"
         button.id = this.id
         
