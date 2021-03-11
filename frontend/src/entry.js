@@ -7,6 +7,7 @@ class Entry {
         this.end_date = end_date
         this.countryName = countryName
         this.countryArea = countryArea
+        Entry.all.push(this)
     }
 
     putEntryOnDom() {
@@ -19,7 +20,7 @@ class Entry {
         let p4 = document.createElement("p")
         let p5 = document.createElement("p")
         let p6 = ocument.createElement("p")
-        let button = document.createElement("button")
+        // let button = document.createElement("button")
         // let span = document.createElement("span")
     
     
@@ -35,7 +36,7 @@ class Entry {
         // button.append(span)
     
     
-        li.append(p1, p2, p3, button)
+        li.append(p1, p2, p3, p4, p5, p6)
         div.append(li)
         ul.append(div)
     }
