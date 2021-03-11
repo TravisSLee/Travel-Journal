@@ -7,6 +7,6 @@ const nav = document.getElementById("nav");
 document.addEventListener("DOMContentLoaded",init);
 
 function init() {
-    
+    getAllEntries();
   }
   
