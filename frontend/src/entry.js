@@ -10,6 +10,8 @@ class Entry {
         Entry.all.push(this)
     }
 
+    static all = [] 
+
     putEntryOnDom() {
   
         let div = document.createElement("div")
@@ -19,24 +21,22 @@ class Entry {
         let p3 = document.createElement("p")
         let p4 = document.createElement("p")
         let p5 = document.createElement("p")
-        let p6 = ocument.createElement("p")
-        // let button = document.createElement("button")
-        // let span = document.createElement("span")
+        let p6 = document.createElement("p")
+        let button = document.createElement("button")
     
     
         p1.innerText = this.title
         p2.innerText = this.content
         p3.innerText = this.countryName
         p4.innerHTML = this.countryArea
-        p5.innerHTML = this.start_date
-        p6.innerHTML = this.end_date
+        p5.innerHTML = this.start_date.toString();
+        p6.innerHTML = this.end_date.toString();
         button.innerText = "Favorite"
         button.id = this.id
-        // span.innerText = this.likes.toString()
-        // button.append(span)
+        
     
     
-        li.append(p1, p2, p3, p4, p5, p6)
+        li.append(p1, p2, p3, p4, p5, p6, button)
         div.append(li)
         ul.append(div)
     }

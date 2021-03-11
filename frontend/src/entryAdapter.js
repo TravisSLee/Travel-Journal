@@ -1,8 +1,8 @@
 class EntryAdapter {
 
 
-    constructor(url ) {
-        this.baseUrl = url + "entries"; 
+    constructor(url) {
+        this.baseUrl = url; 
     }
 
     submitEntry(e){
@@ -10,11 +10,11 @@ class EntryAdapter {
         const entryInfo = {
             title: e.target[0].value,
             content: e.target[1].value,
-            favorite: e.target[2].value,
-            start_date: e.target[3].value,
-            end_date: e.target[4].value,
-            countryName: e.target[5].value,
-            countryArea: e.target[6].value,
+            start_date: e.target[2].value,
+            end_date: e.target[3].value,
+            countryName: e.target[4].value,
+            countryArea: e.target[5].value,
+            favorite: e.target[6].value
         }
 
      
@@ -37,8 +37,8 @@ class EntryAdapter {
                 
                 .then(r => r.json())
                 .then(data => {
-                    data.forEach(p => {
-                        let entry = new Entry(e.id, e.title, e.content, e.favorite, e.start_date, e.end_date, e.country.name, e.country.area);
+                    data.forEach(e => {
+                        let entry = new Entry(e.title, e.content, e.favorite, e.start_date, e.end_date, e.country.name, e.country.area);
                         entry.putEntryOnDom();
                     })
                 })
