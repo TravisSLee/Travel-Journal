@@ -42,7 +42,7 @@ class CountriesController < ApplicationController
         @country = Country.find_by(id: params[:id])
     end
 
-    def countries_params
+    def country_params
         params.require(:country).permit(:name, :area)
     end
 end

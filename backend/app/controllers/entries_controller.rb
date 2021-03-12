@@ -19,7 +19,9 @@ class EntriesController < ApplicationController
     end
 
     def create
-        @entry = Entry.create(entry_params)
+        @country = Country.find_or_create_by(name: params[:country][:name], area: params[:country][:area])
+        @entry = Entry.new(entry_params)
+        @entry.country_id = @country.id
         if @entry.save
             render json: @entry.entry_to_json
         else
@@ -28,11 +30,11 @@ class EntriesController < ApplicationController
     end
 
     def update
-        @entry = Entry.update(entry_params)
+        @entry.update(entry_params)
         if @entry.save
             render json: @entry.entry_to_json
         else
-            render json: @entry.errors, status: :unprocessable_entity;
+            render json: @entry.errors, status: :unprocessable_entity
         end
     end
 
@@ -51,7 +53,11 @@ class EntriesController < ApplicationController
     end
 
     def set_country
-        country = Country.find_or_create_by(id: params[:country_id]);
+        @country = Country.find_or_create_by(id: params[:country_id]);
+    end
+
+    def country_params
+        params.require(:country).permit(:name, :area)
     end
 
     def entry_params

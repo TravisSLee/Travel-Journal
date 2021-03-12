@@ -1,17 +1,16 @@
 class EntryAdapter {
 
-
     constructor(url) {
         this.baseUrl = url; 
     }
 
     submitEntry(e){
         e.preventDefault();
-
+        
         const entryInfo = {
             title: e.target[0].value,
             content: e.target[1].value,
-            Country: {
+            country: {
                 name: e.target[2].value,
                 area: e.target[3].value
             }, 
@@ -26,9 +25,9 @@ class EntryAdapter {
         })
             .then(r => r.json())
             .then(data => {
-                let entry = new Entry(e.id, e.title, e.content, e.favorite, e.Country.name, e.Country.area, e.created_at);
-                console.log(entry)
-                // entry.putEntryOnDom();
+                let entry = new Entry(data.title, data.content, data.favorite, data.country.name, data.country.area, data.created_at, data.id);
+                entry.putEntryOnDom();
+                //clear form function
             })
         }
     
@@ -38,11 +37,33 @@ class EntryAdapter {
                 .then(r => r.json())
                 .then(data => {
                     data.forEach(e => {
-                        let entry = new Entry(e.title, e.content, e.favorite, e.country.name, e.country.area, e.created_at);
+                        let entry = new Entry(e.title, e.content, e.favorite, e.country.name, e.country.area, e.created_at, e.id);
                         entry.putEntryOnDom();
                     })
                 })
         }
         
-
+        handleFavorite(e) {
+            let fav = (e) => {
+                
+                if ( e.target.innerText ==  "Favorite x"){
+                    return true
+                } else {
+                    return false
+                }
+            }
+            fetch(baseUrl + "entries" + `/${this.id}`, {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({favorite: fav(e)})
+            })
+        
+                .then(r => r.json())
+                .then(data => updateFav(data))
+        }
+        
+    
+       
 }
