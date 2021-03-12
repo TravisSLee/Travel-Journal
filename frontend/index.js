@@ -5,7 +5,7 @@ const main = document.getElementById("main");
 const header = document.getElementById("header");
 const nav = document.getElementById("nav");
 const form = document.getElementById("blogform")
-// form.addEventListener("submit", submitEntry)
+form.addEventListener("submit", entryAdapter.submitEntry)
 const container = document.getElementById("container")
 const ul = document.getElementById("entry-area")
 document.addEventListener("DOMContentLoaded",init);

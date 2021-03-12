@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
     belongs_to :country
+    validates :title, :content, presence: true
     accepts_nested_attributes_for :country, reject_if: proc {|attributes| attributes['name'].blank?}
 
     def self.arr_to_json

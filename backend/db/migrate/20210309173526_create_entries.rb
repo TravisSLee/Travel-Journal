@@ -4,7 +4,7 @@ class CreateEntries < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :content
       t.integer :country_id
-      t.boolean :favorite
+      t.boolean :favorite, :default => false
       
       t.datetime :created_at
     end

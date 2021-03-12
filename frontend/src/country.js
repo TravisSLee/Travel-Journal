@@ -5,4 +5,6 @@ class Country {
         Country.all.push(this)
     }
 
+    static all = []
+
 }

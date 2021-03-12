@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_173556) do
     t.string "title"
     t.string "content"
     t.integer "country_id"
-    t.boolean "favorite"
+    t.boolean "favorite", default: false
     t.datetime "created_at"
   end
 

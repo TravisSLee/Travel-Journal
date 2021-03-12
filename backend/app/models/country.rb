@@ -1,5 +1,6 @@
 class Country < ApplicationRecord
     has_many :entries
+    validates :name, :area, presence: true
 
     def self.arr_to_json
         self.all.map do |e|
