@@ -3,7 +3,7 @@ class Entry {
         this.title = title
         this.content = content
         this.favorite = favorite
-        this.Country = new Country(name, area)
+        this.country = new Country(name, area)
         this.created_at = created_at
         this.id = id
         Entry.all.push(this)
@@ -24,8 +24,8 @@ class Entry {
         //customize p tags later
         h2.innerText = this.title
         p2.innerText = this.content
-        p3.innerText = this.Country.name
-        p4.innerHTML = this.Country.area
+        p3.innerText = this.country.name
+        p4.innerHTML = this.country.area
         p5.innerHTML = this.created_at
         button.innerText = "Favorite"
         button.id = this.id
