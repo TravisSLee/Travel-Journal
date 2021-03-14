@@ -18,22 +18,21 @@ class Entry {
         let p2 = document.createElement("p")
         let p3 = document.createElement("p")
         let p4 = document.createElement("p")
-        let p5 = document.createElement("p")
+        
         let button = document.createElement("button")
         let span = document.createElement("span")
         //customize p tags later
         h2.innerText = this.title
         p2.innerText = this.content
-        p3.innerText = this.country.name
-        p4.innerHTML = this.country.area
-        p5.innerHTML = this.created_at
+        p3.innerText = `${this.country.area}, ${this.country.name}`
+        p4.innerHTML = `Written on: ${this.created_at}`
         button.innerText = "Favorite"
         button.id = this.id
         span.innerHTML = checker(this)
         button.append(span)
         button.addEventListener("click", entryAdapter.handleFavorite)
        
-        li.append(h2, p2, p3, p4, p5, button)
+        li.append(h2, p2, p3, p4, button)
         div.append(li)
         ul.append(div)
     }
