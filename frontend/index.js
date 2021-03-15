@@ -4,8 +4,7 @@ const entryAdapter = new EntryAdapter(baseUrl);
 const main = document.getElementById("main");
 const header = document.getElementById("header");
 const nav = document.getElementById("nav");
-const form = document.getElementById("entryform");
-form.addEventListener("submit", entryAdapter.submitEntry);
+const formArea = document.getElementById("form-area")
 const container = document.getElementById("container");
 const ul = document.getElementById("entry-area");
 const sortButton = document.getElementById("sort");
@@ -19,23 +18,28 @@ document.addEventListener("DOMContentLoaded",init);
 
 function init() {
     entryAdapter.getAllEntries();
+    putFormToDom();
   }
 
-function putFormToDom(){
-  form.innerHTML = `
-  <h2>Create an entry here</h2>
-         <form id="entryform">
-             <label> Title </label>
-             <input type="text" name="title" id="entry-title"><br>
-             <label> Content </label>
-             <textarea cols="25" name="mytextbox" rows="8" id="entry-content"></textarea><br>
-             <label> Country </label>
-             <input type="text" name="name" id="country-name"><br>
-             <label> Area </label>
-             <input type="text" name="are" id="country-area"><br>
-             <input type="submit" value="New Entry" id="entry-submit">
-         </form>
-         `
+function putFormToDom() {
+  formArea.innerHTML = `
+    <div class="entry-form">
+    <h2>Create An Entry Here</h2>
+          <form id="entry-form">
+              <label> Title </label><br>
+              <input type="text" name="title" id="entry-title"><br>
+              <label> Content </label><br>
+              <textarea cols="25" name="mytextbox" rows="8" id="entry-content"></textarea><br>
+              <label> Country </label><br>
+              <input type="text" name="name" id="country-name"><br>
+              <label> Area </label><br>
+              <input type="text" name="are" id="country-area"><br>
+              <input type="submit" value="New Entry" id="entry-submit">
+          </form>
+    </div>
+          `
+    document.getElementById("form-area").addEventListener("submit", entryAdapter.submitEntry);
+    
 }
 
 function updateFav(data) {

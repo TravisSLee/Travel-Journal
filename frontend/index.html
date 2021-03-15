@@ -10,30 +10,19 @@
     <div>
         <h1 id="header">Welcome to Travel-Journal </h1>
     </div>
-    <div class="entry-form">
-        <h2>Create an entry here</h2>
-         <form id="entryform">
-             <label> Title </label>
-             <input type="text" name="title" id="entry-title"><br>
-             <label> Content </label>
-             <textarea cols="25" name="mytextbox" rows="8" id="entry-content"></textarea><br>
-             <label> Country </label>
-             <input type="text" name="name" id="country-name"><br>
-             <label> Area </label>
-             <input type="text" name="are" id="country-area"><br>
-             <input type="submit" value="New Entry" id="entry-submit">
-         </form>
+    <div id="form-area">
     </div>
+    
 
     <div id="search-div">
         <input type="text" id="search"> 
         <button id="searchButton">Search By Country Name</button>
     </div>
-    <button id="sort">Sort By Title </button>
+    <button id="sort">Sort By Title </button><br>
     <button id="sortFavorite">Sort By Favorite</button>
 
     <div id="container">
-        <h1>
+        <h1 id="container-header">
             Below Is A List Of All Your Entries. 
         </h1>
         <ul id="entry-area"> </ul>
