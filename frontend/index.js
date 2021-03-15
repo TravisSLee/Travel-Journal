@@ -88,13 +88,12 @@ function handleSort(e) {
 
 
 function handleSearch(e) {
-  let inputValue = document.getElementById("search").value;
+
+  let inputValue = document.getElementById("search").value
+  ul.innerHTML = ""
   let filterdArray = Entry.all.filter(e => {
       return e.country.name.toLowerCase() === inputValue.toLowerCase()
   })
-
-  
-  
   filterdArray.forEach(e => {
       e.putEntryOnDom();
   })
