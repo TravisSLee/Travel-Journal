@@ -25,9 +25,15 @@ class EntryAdapter {
         })
             .then(r => r.json())
             .then(data => {
+                debugger
                 let entry = new Entry(data.title, data.content, data.favorite, data.country.name, data.country.area, data.created_at, data.id);
-                entry.putEntryOnDom();
+                if (entry.id >= 0 ) {
+                    entry.putEntryOnDom()
+                }
             })
+            .catch(function(error) {
+                alert(error.message)
+              }) 
             
         }
     
@@ -38,7 +44,9 @@ class EntryAdapter {
                 .then(data => {
                     data.forEach(e => {
                         let entry = new Entry(e.title, e.content, e.favorite, e.country.name, e.country.area, e.created_at, e.id);
-                        entry.putEntryOnDom();
+                        if (entry.id != "undefined") {
+                            entry.putEntryOnDom();
+                        }
                     })
                 })
         }
