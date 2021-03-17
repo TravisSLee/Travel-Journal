@@ -29,7 +29,7 @@ class EntryAdapter {
                 if (entry.id >= 0 ) {
                     entry.putEntryOnDom()
                 }
-                clearFields();
+                UI.clearFields();
             })
             .catch(function(error) {
                 alert(error.message)
@@ -72,6 +72,36 @@ class EntryAdapter {
                 .then(data => updateFav(data))
         }
         
-    
+        handleUpdate(e){
+            e.preventDefault();
+        
+        const entryInfo = {
+            title: e.target[0].value,
+            content: e.target[1].value,
+            country: {
+                name: e.target[2].value,
+                area: e.target[3].value
+            }, 
+            
+        }
+        fetch(baseUrl + "entries" + `/${this.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(entryInfo)
+        })
+            .then(r => r.json())
+            .then(data => {
+                let entry = new Entry(data.title, data.content, data.favorite, data.country.name, data.country.area, data.created_at, data.id);
+                if (entry.id >= 0 ) {
+                    entry.putEntryOnDom()
+                }
+                UI.clearFields();
+            })
+            .catch(function(error) {
+                alert(error.message)
+              }) 
+        }
        
 }
