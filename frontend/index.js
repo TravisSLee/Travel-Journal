@@ -39,7 +39,12 @@ function putFormToDom() {
     </div>
           `
     document.getElementById("form-area").addEventListener("submit", entryAdapter.submitEntry);
-    
+}
+function clearFields(){
+  document.getElementById('entry-title').value = ''
+  document.getElementById('entry-content').value = ''
+  document.getElementById('country-name').value = ''
+  document.getElementById('country-area').value = ''
 }
 
 function updateFav(data) {
@@ -79,7 +84,6 @@ function handleSort(e) {
  
   ul.innerHTML = ""
   
-  
   sortedArray.forEach(e => {
       e.putEntryOnDom();
   })
@@ -115,3 +119,5 @@ function lookForFavs(e){
     f.putEntryOnDom();
   })
 }
+
+// to update resource I want to render a form with a new button

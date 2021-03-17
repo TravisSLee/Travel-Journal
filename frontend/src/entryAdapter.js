@@ -29,6 +29,7 @@ class EntryAdapter {
                 if (entry.id >= 0 ) {
                     entry.putEntryOnDom()
                 }
+                clearFields();
             })
             .catch(function(error) {
                 alert(error.message)
