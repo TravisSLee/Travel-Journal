@@ -1,5 +1,6 @@
 class UI{
-    static putFormToDom() {
+    static putNewEntryFormToDom() {
+      formArea.innerHTML = ""
       formArea.innerHTML = `
         <div class="entry-form">
         <h2>Create An Entry Here</h2>
@@ -97,7 +98,29 @@ class UI{
       })
     }
 
-    static renderUpdate(e){
-        
+    static clearFormArea(){
+      formArea.innerHTML = ""
+    }
+
+    static renderUpdate(obj){
+      formArea.innerHTML = ""
+      formArea.innerHTML = `
+      <div class="entry-form">
+      <h2>Edit An Entry Here</h2>
+            <form id="edit-entry-form">
+                <label> Title </label><br>
+                <input type="text" name="title" value="${obj.title}" id="entry-title"><br>
+                <label> Content </label><br>
+                <textarea cols="25" name="mytextbox" rows="8" value="${obj.content}" id="entry-content"></textarea><br>
+                <label> Country </label><br>
+                <input type="text" name="name" value="${obj.country.name}" id="country-name"><br>
+                <label> Area </label><br>
+                <input type="text" name="area" value="${obj.country.area}"  id="country-area"><br>
+                <input type="submit" value="Edit Entry" id="entry-submit">
+            </form>
+      </div>
+            `
+          
+      document.getElementById("edit-entry-form").addEventListener("submit", entryAdapter.handleUpdate)
     }
   }

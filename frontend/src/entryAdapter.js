@@ -74,34 +74,48 @@ class EntryAdapter {
         
         handleUpdate(e){
             e.preventDefault();
-        
-        const entryInfo = {
-            title: e.target[0].value,
-            content: e.target[1].value,
-            country: {
-                name: e.target[2].value,
-                area: e.target[3].value
-            }, 
+            const entryInfo = {
+                title: e.target[0].value,
+                content: e.target[1].value,
+                country: {
+                    name: e.target[2].value,
+                    area: e.target[3].value
+                }, 
+            }
+            debugger
+            let div = document.getElementById()
+            let h2 = div.children[0]
+            h2.innerText = e.target[0].value
+            let p1 = div.children[1]
+            p1.innerText = e.target[1].value
+            let p2 = div.children[2]
+            p2.innerText = e.target[2].value
+            let p3 = div.children[3]
+            p3.innerText = e.target[3].value
+
+            UI.clearFormArea();
+            UI.putNewEntryFormToDom();
+            
+            fetch(baseUrl + "entries" + `/${this.id}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(entryInfo)
+            })
             
         }
-        fetch(baseUrl + "entries" + `/${this.id}`, {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(entryInfo)
-        })
-            .then(r => r.json())
-            .then(data => {
-                let entry = new Entry(data.title, data.content, data.favorite, data.country.name, data.country.area, data.created_at, data.id);
-                if (entry.id >= 0 ) {
-                    entry.putEntryOnDom()
+
+        handleDestroy(e){
+            fetch(baseUrl + "entries" + `/${this.id}`, {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
                 }
-                UI.clearFields();
             })
-            .catch(function(error) {
-                alert(error.message)
-              }) 
-        }
+            let div = document.getElementById(`${this.id}`)
+            div.remove();
+            }
+        
        
 }

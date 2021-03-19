@@ -4,7 +4,7 @@ const entryAdapter = new EntryAdapter(baseUrl);
 const main = document.getElementById("main");
 const header = document.getElementById("header");
 const nav = document.getElementById("nav");
-const formArea = document.getElementById("form-area")
+const formArea = document.getElementById("form-area");
 const container = document.getElementById("container");
 const ul = document.getElementById("entry-area");
 const sortButton = document.getElementById("sort");
@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded",init);
 
 function init() {
     entryAdapter.getAllEntries();
-    UI.putFormToDom();
+    UI.clearFormArea();
+    UI.putNewEntryFormToDom();
   }
 
 
