@@ -40,14 +40,9 @@ class Entry {
         span.innerHTML = UI.checker(this)
         button.append(span)
         button.addEventListener("click", entryAdapter.handleFavorite)
-        updateButton.addEventListener("click", UI.renderUpdate(this))
+        updateButton.addEventListener("click", UI.renderUpdate)
         deleteButton.addEventListener("click", entryAdapter.handleDestroy)
         div.append(h2, p1, p2, p3, button, updateButton, deleteButton)
-        
         ul.append(div)
     }
-    //want the button to indicate that it is favorited or not
-    //"✔"
-    
-
 }

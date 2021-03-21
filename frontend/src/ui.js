@@ -18,6 +18,7 @@ class UI{
         </div>
               `
         document.getElementById("form-area").addEventListener("submit", entryAdapter.submitEntry);
+
     }
     static clearFields(){
       document.getElementById('entry-title').value = ''
@@ -102,20 +103,24 @@ class UI{
       formArea.innerHTML = ""
     }
 
-    static renderUpdate(obj){
-      formArea.innerHTML = ""
+    static renderUpdate(e){
+      
+      let entry = Entry[e.target.id - 1]
+      debugger
+      this.clearFormArea();
       formArea.innerHTML = `
+      <button id="cancelButton">Cancel Update</button>
       <div class="entry-form">
       <h2>Edit An Entry Here</h2>
             <form id="edit-entry-form">
                 <label> Title </label><br>
-                <input type="text" name="title" value="${obj.title}" id="entry-title"><br>
+                <input type="text" name="title" value="${entry.title}" id="entry-title"><br>
                 <label> Content </label><br>
-                <textarea cols="25" name="mytextbox" rows="8" value="${obj.content}" id="entry-content"></textarea><br>
+                <textarea cols="25" name="mytextbox" rows="8" value="${entry.content}" id="entry-content"></textarea><br>
                 <label> Country </label><br>
-                <input type="text" name="name" value="${obj.country.name}" id="country-name"><br>
+                <input type="text" name="name" value="${entry.country.name}" id="country-name"><br>
                 <label> Area </label><br>
-                <input type="text" name="area" value="${obj.country.area}"  id="country-area"><br>
+                <input type="text" name="area" value="${entry.country.area}"  id="country-area"><br>
                 <input type="submit" value="Edit Entry" id="entry-submit">
             </form>
       </div>

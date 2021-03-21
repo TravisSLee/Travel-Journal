@@ -83,7 +83,7 @@ class EntryAdapter {
                 }, 
             }
             debugger
-            let div = document.getElementById()
+            let div = document.getElementById(this.id)
             let h2 = div.children[0]
             h2.innerText = e.target[0].value
             let p1 = div.children[1]
@@ -103,7 +103,9 @@ class EntryAdapter {
                 },
                 body: JSON.stringify(entryInfo)
             })
-            
+            .catch(function(error) {
+                alert(error.message)
+              })
         }
 
         handleDestroy(e){
