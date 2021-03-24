@@ -103,10 +103,7 @@ class UI{
       formArea.innerHTML = ""
     }
 
-    static renderUpdate(e){
-      
-      let entry = Entry[e.target.id - 1]
-      debugger
+    static renderUpdateForm(entry){
       this.clearFormArea();
       formArea.innerHTML = `
       <button id="cancelButton">Cancel Update</button>
@@ -121,6 +118,7 @@ class UI{
                 <input type="text" name="name" value="${entry.country.name}" id="country-name"><br>
                 <label> Area </label><br>
                 <input type="text" name="area" value="${entry.country.area}"  id="country-area"><br>
+                <input type=hidden name="entry-id" value="${entry.id}"id="id"/>
                 <input type="submit" value="Edit Entry" id="entry-submit">
             </form>
       </div>

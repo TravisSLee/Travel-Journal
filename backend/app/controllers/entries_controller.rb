@@ -30,7 +30,9 @@ class EntriesController < ApplicationController
     end
 
     def update
+        @country = Country.find_or_create_by(name: params[:country][:name], area: params[:country][:area])
         @entry.update(entry_params)
+        @entry.country_id = @country.id
         if @entry.save
             render json: @entry.entry_to_json
         else

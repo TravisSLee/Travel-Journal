@@ -15,6 +15,7 @@ class EntryAdapter {
                 area: e.target[3].value
             }, 
             
+            
         }
         fetch(baseUrl + "entries", {
             method: "POST",
@@ -67,7 +68,6 @@ class EntryAdapter {
                 },
                 body: JSON.stringify({favorite: fav(e)})
             })
-        
                 .then(r => r.json())
                 .then(data => updateFav(data))
         }
@@ -79,11 +79,11 @@ class EntryAdapter {
                 content: e.target[1].value,
                 country: {
                     name: e.target[2].value,
-                    area: e.target[3].value
+                    area: e.target[3].value,
                 }, 
             }
-            debugger
-            let div = document.getElementById(this.id)
+            
+            let div = document.getElementById(e.target[4].value)
             let h2 = div.children[0]
             h2.innerText = e.target[0].value
             let p1 = div.children[1]
@@ -96,7 +96,7 @@ class EntryAdapter {
             UI.clearFormArea();
             UI.putNewEntryFormToDom();
             
-            fetch(baseUrl + "entries" + `/${this.id}`, {
+            fetch(baseUrl + "entries" + `/${e.target[4].value}`, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
