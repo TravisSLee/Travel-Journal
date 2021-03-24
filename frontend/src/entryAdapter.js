@@ -6,7 +6,6 @@ class EntryAdapter {
 
     submitEntry(e){
         e.preventDefault();
-        
         const entryInfo = {
             title: e.target[0].value,
             content: e.target[1].value,

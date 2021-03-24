@@ -17,7 +17,7 @@ class UI{
               </form>
         </div>
               `
-        document.getElementById("form-area").addEventListener("submit", entryAdapter.submitEntry);
+        document.getElementById("entry-area").addEventListener("submit", entryAdapter.submitEntry);
 
     }
     static clearFields(){
