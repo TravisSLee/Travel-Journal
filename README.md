@@ -35,7 +35,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ```
 
-Finally in order to run the app, then "rails s" into your terminal to start up listing your favorite sports memorabilia.
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
